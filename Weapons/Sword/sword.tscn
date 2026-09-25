@@ -18,7 +18,7 @@ flip_v = true
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1496454004]
 position = Vector2(8, -8)
-collision_layer = 8
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=958866371]

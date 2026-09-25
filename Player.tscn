@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bykvf2ubil4xk" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="Texture2D" uid="uid://d3arxu1d6a0v4" path="res://icon.svg" id="2_kpjcp"]
-[ext_resource type="PackedScene" uid="uid://doh2ld3fcxbdb" path="res://Weapons/Sword/sword.tscn" id="3_kne1u"]
+[ext_resource type="PackedScene" uid="uid://dro4h25ntlhsc" path="res://Weapons/Bow/bow.tscn" id="3_kne1u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 16.0
@@ -28,4 +28,4 @@ texture = SubResource("AtlasTexture_kpjcp")
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=1024971558]
 position = Vector2(12, 0)
 
-[node name="sword" parent="WeaponHolder" unique_id=672158400 instance=ExtResource("3_kne1u")]
+[node name="Bow" parent="WeaponHolder" unique_id=1046731800 instance=ExtResource("3_kne1u")]

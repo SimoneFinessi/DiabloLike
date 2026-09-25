@@ -7,7 +7,7 @@ var health: int
 var current_weapon: Weapon
 func _ready():
 	health = max_health
-	current_weapon = $WeaponHolder/sword
+	current_weapon = $WeaponHolder/Bow
 
 
 
