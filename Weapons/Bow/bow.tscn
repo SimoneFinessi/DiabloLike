@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dro4h25ntlhsc"]
+
+[ext_resource type="Script" uid="uid://dkm5gbsdm7s0o" path="res://Weapons/Bow/bow.gd" id="1_phr7p"]
+[ext_resource type="Texture2D" uid="uid://c10vsu7nejrhe" path="res://Weapons/Bow/Senza titolo.jpg" id="1_x3h8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa7nt"]
+atlas = ExtResource("1_x3h8c")
+region = Rect2(118, 2, 158, 634)
+
+[node name="Bow" type="Node2D" unique_id=1046731800]
+script = ExtResource("1_phr7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948522137]
+position = Vector2(3.9999995, 0)
+scale = Vector2(0.05063292, 0.05047319)
+texture = SubResource("AtlasTexture_qa7nt")

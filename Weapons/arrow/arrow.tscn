@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c5wvd8bhrdo2y"]
+
+[ext_resource type="Texture2D" uid="uid://c10vsu7nejrhe" path="res://Weapons/Bow/Senza titolo.jpg" id="1_ew0xx"]
+[ext_resource type="Script" uid="uid://cd2ccixg7epfd" path="res://Weapons/arrow/arrow.gd" id="1_u3pil"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xd07"]
+atlas = ExtResource("1_ew0xx")
+region = Rect2(5, 112, 54, 419)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pil"]
+size = Vector2(16, 2.5)
+
+[node name="Arrow" type="Area2D" unique_id=1299551837]
+script = ExtResource("1_u3pil")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1108997477]
+position = Vector2(-0.03815937, 0.030303158)
+rotation = 1.5707964
+scale = Vector2(0.048339285, 0.038922768)
+texture = SubResource("AtlasTexture_3xd07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=48749565]
+shape = SubResource("RectangleShape2D_u3pil")

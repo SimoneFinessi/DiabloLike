@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://doh2ld3fcxbdb"]
+
+[ext_resource type="Texture2D" uid="uid://iuo3d8hp8ec5" path="res://Weapons/Sword/Gemini_Generated_Image_xv5ux7xv5ux7xv5u.jpg" id="1_iekfp"]
+[ext_resource type="Script" uid="uid://cfj7qvbsi8kli" path="res://Weapons/Sword/sword.gd" id="1_p5cha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
+size = Vector2(19, 32)
+
+[node name="sword" type="Node2D" unique_id=672158400]
+script = ExtResource("1_p5cha")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1503697157]
+position = Vector2(8, -7.9999995)
+scale = Vector2(0.015624999, 0.015624999)
+texture = ExtResource("1_iekfp")
+flip_h = true
+flip_v = true
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1496454004]
+position = Vector2(8, -8)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=958866371]
+position = Vector2(1.5, 8)
+shape = SubResource("RectangleShape2D_6fhyq")
+disabled = true

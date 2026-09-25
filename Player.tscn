@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dhg7t36f8p2mr"]
+
+[ext_resource type="Script" uid="uid://bykvf2ubil4xk" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="Texture2D" uid="uid://d3arxu1d6a0v4" path="res://icon.svg" id="2_kpjcp"]
+[ext_resource type="PackedScene" uid="uid://doh2ld3fcxbdb" path="res://Weapons/Sword/sword.tscn" id="3_kne1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
+atlas = ExtResource("2_kpjcp")
+region = Rect2(48, 53, 32, 32)
+
+[node name="Player" type="CharacterBody2D" unique_id=779659838]
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_xhfnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=479286865]
+shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=135959707]
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_kpjcp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=694063774]
+
+[node name="WeaponHolder" type="Node2D" parent="." unique_id=1024971558]
+position = Vector2(12, 0)
+
+[node name="sword" parent="WeaponHolder" unique_id=672158400 instance=ExtResource("3_kne1u")]
