@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhg7t36f8p2mr" path="res://Player.tscn" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://b0xmgaumjyre4" path="res://dungeon_tile_worn.png" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://ec1n4je6man0" path="res://Enemy.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://w011wwfii44h" path="res://hud.gd" id="4_cm0pq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0du0"]
 texture = ExtResource("1_uu6xs")
@@ -35,6 +36,8 @@ size = Vector2(50, 800)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
 size = Vector2(50, 800)
 
+[sub_resource type="Theme" id="Theme_r0du0"]
+
 [node name="Main" type="Node2D" unique_id=1370319381]
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=109435289]
@@ -66,3 +69,23 @@ position = Vector2(290, 191)
 
 [node name="Enemy" parent="." unique_id=1069410958 instance=ExtResource("3_r0du0")]
 position = Vector2(648, -8)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1800318298]
+script = ExtResource("4_cm0pq")
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=564717088]
+modulate = Color(1, 0.02745098, 0.019607844, 1)
+offset_left = 315.0
+offset_top = 604.0
+offset_right = 829.0
+offset_bottom = 631.0
+theme = SubResource("Theme_r0du0")
+theme_override_colors/font_color = Color(0.9490196, 0, 0.015686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+show_percentage = false
+
+[node name="Ammo" type="Label" parent="HUD" unique_id=65183962]
+offset_left = 1007.0
+offset_top = 604.0
+offset_right = 1047.0
+offset_bottom = 627.0

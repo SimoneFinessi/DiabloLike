@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
 @onready var weapon_holder: Node2D = $WeaponHolder
+@onready var health_bar: ProgressBar = $"../HUD/HealthBar"
 @export var speed: float =200.0
 @export var max_health: int = 100
 var health: int
 var current_weapon: Weapon
 func _ready():
 	health = max_health
+	health_bar.max_value = max_health
+	health_bar.value=health
 	current_weapon = $WeaponHolder/Bow
 
 
@@ -16,6 +19,7 @@ func die() -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	health_bar.value=health
 	print("Player Health: %d" % health)
 	if health <= 0:
 		die()
