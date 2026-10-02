@@ -89,3 +89,9 @@ offset_left = 1007.0
 offset_top = 604.0
 offset_right = 1047.0
 offset_bottom = 627.0
+
+[node name="Gold" type="Label" parent="HUD" unique_id=1168961999]
+offset_left = 32.0
+offset_top = 608.0
+offset_right = 88.0
+offset_bottom = 632.0

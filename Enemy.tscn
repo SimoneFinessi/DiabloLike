@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3xd07"]
 radius = 14.0
 
+[sub_resource type="Theme" id="Theme_3xd07"]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1069410958]
 collision_layer = 2
 collision_mask = 5
@@ -18,3 +20,14 @@ texture = ExtResource("1_tt7e2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090016333]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3xd07")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1432254373]
+modulate = Color(1, 0, 0, 1)
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = -11.0
+theme = SubResource("Theme_3xd07")
+theme_override_colors/font_color = Color(0.9490196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+show_percentage = false

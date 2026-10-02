@@ -5,13 +5,17 @@ extends CharacterBody2D
 @export var max_health: int = 50
 @export var damage: int = 10
 @export var damage_cooldown: float = 1.0
+@onready var HealhtBar=$HealthBar
 
 var health: int
 var last_damage_time: float = 0.0
 @onready var player = get_node("../Player")
 
+
 func _ready():
 	health = max_health
+	HealhtBar.max_value=max_health
+	HealhtBar.value=health
 
 func _physics_process(delta: float) -> void:
 	is_on_contact()
@@ -31,6 +35,7 @@ func die() -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	HealhtBar.value=health
 	print("Enemy Health: %d" % health)
 	if health <= 0:
 		queue_free()
