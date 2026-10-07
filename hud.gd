@@ -13,5 +13,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	ammo_label.text="Ammo: "+str(player.ammo)
+	health_bar.max_value = player.max_health
 	health_bar.value=player.health
 	gold.text="Gold: "+str(player.gold)

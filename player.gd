@@ -4,17 +4,24 @@ extends CharacterBody2D
 @export var speed: float =200.0
 var dodge_speed: float = 500.0
 var dodge_duration: float = 0.15
-@export var max_health: int = 100
 var health: int
 @onready var sword:Weapon=$WeaponHolder/sword
 @onready var bow:Weapon=$WeaponHolder/Bow
-var Start_ammo:int=20
+var Start_ammo:int=30
 var ammo=Start_ammo
 var gold:int=0
 var current_weapon: Weapon
 var dodge_cooldown:float=1.0
 var can_dodge:bool=true
 var is_dodging:bool=false
+var modifier:float=1.0
+var Strength:int=16
+var Dexterity:int=13
+var Intelligence:int=12
+var Constitution:int=14
+var Wisdom:int=10
+var Charisma:int=10
+@export var max_health: int = 100+(Constitution-10)*10
 func _ready():
 	health = max_health
 	current_weapon = sword
@@ -55,6 +62,8 @@ func dodge(direction: Vector2) -> void:
 	is_dodging = false
 	await get_tree().create_timer(dodge_cooldown).timeout
 	can_dodge = true
+func AC()->int:
+	return 10 + (Dexterity - 10)/2
 
 func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
