@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+const EquipmentItemScript = preload("res://Equipment/EquipmentItem.gd")
 @onready var weapon_holder: Node2D = $WeaponHolder
 @export var speed: float =200.0
 var dodge_speed: float = 500.0
@@ -21,8 +21,18 @@ var Intelligence:int=12
 var Constitution:int=14
 var Wisdom:int=10
 var Charisma:int=10
+var inventory: Array[EquipmentItemScript] = []
+var equipment: Dictionary = {
+    EquipmentItemScript.Slot.HEAD: null,
+    EquipmentItemScript.Slot.CHEST: null,
+    EquipmentItemScript.Slot.LEGS: null,
+    EquipmentItemScript.Slot.FEET: null
+}
+var rings: Array[EquipmentItemScript] = []
 @export var max_health: int = 100+(Constitution-10)*10
 func _ready():
+	inventory.resize(20)
+	rings.resize(10)
 	health = max_health
 	current_weapon = sword
 	sword.show()
@@ -63,7 +73,59 @@ func dodge(direction: Vector2) -> void:
 	await get_tree().create_timer(dodge_cooldown).timeout
 	can_dodge = true
 func AC()->int:
-	return 10 + (Dexterity - 10)/2
+	return 10 + (getFullAttribute("Dexterity") - 10)/2
+
+func getFullAttribute(attribute_name:String)->int:
+	var bonus:int=0
+	for equip in equipment.values():
+		if equip !=null:
+			bonus+=equip.stat_bonuses.get(attribute_name,0)
+	for ring in rings:
+		if ring !=null:
+			bonus+=ring.stat_bonuses.get(attribute_name,0)
+	match attribute_name:
+		"Strength":
+			return Strength + bonus
+		"Dexterity":
+			return Dexterity + bonus
+		"Intelligence":
+			return Intelligence + bonus
+		"Constitution":
+			return Constitution + bonus
+		"Wisdom":
+			return Wisdom + bonus
+		"Charisma":
+			return Charisma + bonus
+	return 0
+func equip_item(index:int) -> void:
+	var item: EquipmentItemScript = inventory[index]
+	if item.slot in equipment:
+		if equipment[item.slot]!=null:
+			unequip_item(item.slot)
+		equipment[item.slot]=item
+		inventory[index]=null
+	
+func equip_Ring(InventoryIndex:int, RingIndex:int) -> void:
+	if rings[RingIndex]!=null:
+		unequip_Ring(RingIndex)
+	rings[RingIndex]=inventory[InventoryIndex]
+	inventory[InventoryIndex]=null
+
+func unequip_item(slot:int)-> void:
+	var indexNull=inventory.find(null)
+	if indexNull != -1:
+		inventory[indexNull]=equipment[slot]
+	else:
+		inventory.append(equipment[slot])
+	equipment[slot]=null
+
+func unequip_Ring(index:int)->void:
+	var indexNull=inventory.find(null)
+	if indexNull != -1:
+		inventory[indexNull]=rings[index]
+	else:
+		inventory.append(rings[index])
+	rings[index]=null
 
 func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.

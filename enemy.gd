@@ -14,7 +14,7 @@ var Charisma:int=8
 var health: int
 var last_damage_time: float = 0.0
 @onready var player = get_node("../Player")
-@export var max_health: int = 50+(Constitution-10)*10
+@export var max_health: int = 30+(Constitution-10)*10
 
 func _ready():
 	health = max_health
